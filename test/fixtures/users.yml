@@ -1,0 +1,6 @@
+luke:
+  first_name: Luke
+  last_name: Skywalker
+  email:     luke@starwars.com
+  uid:       1138
+  provider:  google_oauth2
