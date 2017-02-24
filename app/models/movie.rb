@@ -1,4 +1,6 @@
 class Movie < ApplicationRecord
+  has_many :my_movies
+  has_many :users, through: :my_movies
   validates :title, uniqueness: { case_sensitive: false },
                     length:     { minimum: 1, maximum: 50 }
 

@@ -1,5 +1,7 @@
 # Authenticated User model based on default Devise
 class User < ApplicationRecord
+  has_many :my_movies
+  has_many :movies, through: :my_movies
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :trackable, :timeoutable,

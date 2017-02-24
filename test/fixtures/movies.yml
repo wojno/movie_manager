@@ -1,17 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+empire:
+  title: The Empire Strikes Back
+  length: 127
+  release_year: 1981
 
-one:
-  title: MyString
-  string: MyString
-  length: MyString
-  integer: MyString
-  release_year: MyString
-  integer: MyString
-
-two:
-  title: MyString
-  string: MyString
-  length: MyString
-  integer: MyString
-  release_year: MyString
-  integer: MyString
+jedi:
+  title: Return of the Jedi
+  length: 136
+  release_year: 1983
