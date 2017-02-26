@@ -1,0 +1,9 @@
+empire:
+  title: The Empire Strikes Back
+  length: 127
+  release_year: 1981
+
+jedi:
+  title: Return of the Jedi
+  length: 136
+  release_year: 1983

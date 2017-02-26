@@ -1,0 +1,8 @@
+dvd:
+  name: DVD
+
+vhs:
+  name: VHS
+
+streaming:
+  name: Streaming
