@@ -4,3 +4,10 @@ luke:
   email:     luke@starwars.com
   uid:       1138
   provider:  google_oauth2
+
+han:
+  first_name: Han
+  last_name:  Solo
+  email:      han@starwars.com
+  uid:        5555
+  provider:   google_oauth2
