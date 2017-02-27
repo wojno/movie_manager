@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# ui
+gem 'webpack-rails', '~> 0.9.10'
+
 # authentication
 gem 'devise', '~> 4.2'
 gem 'omniauth-oauth2', '~> 1.4'
