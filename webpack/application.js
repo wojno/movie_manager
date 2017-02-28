@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Hello from './components/hello';
+import Hello from 'components/hello';
 
 const App = () => (
   <MuiThemeProvider>
