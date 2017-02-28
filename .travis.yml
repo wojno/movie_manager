@@ -5,6 +5,7 @@ rvm:
 before_install: gem install bundler -v 1.13.7
 before_script:
   - "bundle exec rake db:migrate RAILS_ENV=test"
+  - "npm install"
   - "bundle exec rake webpack:compile"
 cache: bundler
 addons:
