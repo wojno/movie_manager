@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Hello from 'components/hello';
+import Root from 'containers/root';
 
 const App = () => (
   <MuiThemeProvider>
-    <Hello />
+    <Root />
   </MuiThemeProvider>
 );
 
