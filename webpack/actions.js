@@ -24,6 +24,23 @@ export function addNewMovie(movie){
   }
 }
 
+export function addMovieToServer(movie){
+  return dispatch => {
+    return fetch('/my_movies', {
+        credentials: 'same-origin',
+        method: 'POST',
+        body: movie
+      }
+    )
+    .then(response => response.json())
+    .then(json =>
+       dispatch(addNewMovie(movie))
+       // show snackbar with json
+     )
+
+  }
+}
+
 export function fetchMyMovies(){
   return dispatch => {
     dispatch(requestMyMovies())
