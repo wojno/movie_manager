@@ -3,7 +3,8 @@ import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import movies from '../reducers'
 import { createStore, applyMiddleware } from 'redux'
-import Hello from '../components/hello'
+//import Hello from '../components/hello'
+import MyMoviesContainer from './myMoviesContainer'
 import createLogger from 'redux-logger'
 const loggerMiddleware = createLogger()
 
@@ -20,7 +21,7 @@ export default class Root extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Hello />
+        <MyMoviesContainer />
       </Provider>
     )
   }

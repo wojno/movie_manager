@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { requestMyMovies, fetchMyMovies } from '../actions'
 
 
-class Hello extends React.Component {
+class MyMoviesContainer extends React.Component {
   constructor(props){
     super(props)
   }
@@ -41,4 +41,4 @@ function mapStateToProps(state) {
   return f
 }
 
-export default connect(mapStateToProps)(Hello)
+export default connect(mapStateToProps)(MyMoviesContainer)
