@@ -4,7 +4,7 @@ class MyMoviesController < ApplicationController
   # GET /my_movies
   def index
     my_movies = []
-    movies = MyMovie.all.where(user: current_user)
+    movies = MyMovie.all.includes(:movie, :format).where(user: current_user)
     movies.each{|my_movie|
       my_movies << my_movie.friendly_format
     }
