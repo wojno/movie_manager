@@ -3,6 +3,7 @@ import 'whatwg-fetch';
 export const REQUEST_MY_MOVIES = 'REQUEST_MY_MOVIES'
 export const RECEIVE_MY_MOVIES = 'RECEIVE_MY_MOVIES'
 export const ADD_NEW_MOVIE = 'ADD_NEW_MOVIE'
+export const RECEIVE_FORMATS = 'RECEIVE_FORMATS'
 
 export function requestMyMovies(){
   return {
@@ -58,5 +59,23 @@ export function fetchMyMovies(){
       .then(json => 
           dispatch(receiveMyMovies(json))
           )
+  }
+}
+
+export function fetchFormats(){
+  return dispatch => {
+    dispatch(requestMyMovies())
+    return fetch('/formats/', {credentials: 'same-origin'})
+      .then(response => response.json())
+      .then(json =>
+          dispatch(receiveFormats(json))
+          )
+  }
+}
+
+function receiveFormats(json){
+  return {
+    type: RECEIVE_FORMATS,
+    formats: json
   }
 }

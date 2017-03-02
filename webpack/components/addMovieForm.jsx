@@ -1,15 +1,21 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import AutoComplete from 'material-ui/AutoComplete';
 
 class AddMovieForm extends React.Component {
 
+  constructor(props){
+    super(props);
+    this.state = { selectedFormat: null };
+  }
+
   resetForm(){
     document.getElementById('title').value = ''
-    //document.getElementById('format').value = ''
+    document.getElementById('format').value = ''
+    this.setState({selectedFormat: null})
     document.getElementById('rating').value = ''
   }
 
@@ -20,23 +26,44 @@ class AddMovieForm extends React.Component {
         movie: {
           title: document.getElementById('title').value
         },
-        //format: document.getElementById('format').value,
+        format_id: this.state.selectedFormat,
         rating: document.getElementById('rating').value,
-        format_id: 52806113
       }
     }
     this.props.addNewMovie(movie, token)
     this.resetForm()
   }
 
+  setupFormats(){
+    let availableFormats = []
+    this.props.formats.map((format) => (availableFormats.push(
+      {
+        text: format.name,
+        value: format.id
+      }
+    )))
+    return availableFormats
+  }
 
+  onNewRequest(selected){
+    this.setState({selectedFormat: selected.value})
+  }
 
   render(props){
+    let movieFormats = this.setupFormats(this.props.formats);
     return (
       <Paper style={{padding: 10, margin: '10px, 0'}}>
 	<TextField
 	  floatingLabelText="Movie Title"
           id="title"
+	/>
+        <AutoComplete
+          id="format"
+	  floatingLabelText="Format"
+	  filter={AutoComplete.noFilter}
+	  openOnFocus={true}
+	  dataSource={movieFormats}
+          onNewRequest={this.onNewRequest.bind(this)}
 	/>
 	<TextField
 	  floatingLabelText="Rating"
@@ -53,7 +80,12 @@ class AddMovieForm extends React.Component {
 }
 
 AddMovieForm.propTypes = {
-  addNewMovie: React.PropTypes.func
+  addNewMovie: React.PropTypes.func,
+  formats: React.PropTypes.array
 };
+
+AddMovieForm.defaultProps = {
+  formats: []
+}
 
 export default AddMovieForm

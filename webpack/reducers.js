@@ -1,7 +1,8 @@
 import {
   REQUEST_MY_MOVIES,
   RECEIVE_MY_MOVIES,
-  ADD_NEW_MOVIE
+  ADD_NEW_MOVIE,
+  RECEIVE_FORMATS
 } from './actions.js'
 
 function my_movies(state = {
@@ -32,6 +33,8 @@ function movies(state = { isFetching: false, movies: [] }, action) {
       return Object.assign({}, state, 
        my_movies(state, action)
       )
+    case RECEIVE_FORMATS:
+      return Object.assign({}, state, { formats: action.formats })
     default:
       return state
   }
