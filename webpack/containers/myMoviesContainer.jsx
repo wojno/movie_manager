@@ -1,4 +1,5 @@
 import React from 'react'
+import { bindActionCreators } from 'redux';
 import MyMovies from '../components/my_movies';
 import AddMovieForm from '../components/addMovieForm'
 import Paper from 'material-ui/Paper';
@@ -12,8 +13,10 @@ class MyMoviesContainer extends React.Component {
   }
 
   componentDidMount(){
-    const { dispatch } = this.props
-    dispatch(fetchMyMovies())
+    this.props.fetchMyMovies()
+  }
+  addNewMovie(movie){
+    this.props.addNewMovieToServer(movie)
   }
 
   isLoading(isFetching, movies){
@@ -27,26 +30,25 @@ class MyMoviesContainer extends React.Component {
   render(props){
     const { isFetching, movies } = this.props
     return (
-        <AddMovieForm addNewMovie={this.addNewMovie}/>,
-        this.isLoading(isFetching, movies)
+        <div>
+          <AddMovieForm addNewMovie={this.props.addMovieToServer}/>
+          {this.isLoading(isFetching, movies)}
+        </div>
     )
   }
 }
 
-function addNewMovie(movie){
-console.log("try adding ...")
-console.log(movie)
-  dispatch(addMovieToServer(movie))
-}
 
-function mapStateToProps(state, ownProps) {
-  const { selectedSubreddit, postsBySubreddit } = state
-  const f = {
+function mapStateToProps(state){
+  return ({
     isFetching: state.isFetching,
     movies: state.movies
-  }
-
-  return f
+  })
 }
 
-export default connect(mapStateToProps)(MyMoviesContainer)
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  addMovieToServer,
+  fetchMyMovies
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyMoviesContainer)

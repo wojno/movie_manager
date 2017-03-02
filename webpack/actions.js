@@ -24,20 +24,29 @@ export function addNewMovie(movie){
   }
 }
 
-export function addMovieToServer(movie){
+export function addMovieToServer(movie, token){
   return dispatch => {
     return fetch('/my_movies', {
         credentials: 'same-origin',
         method: 'POST',
-        body: movie
+        body: JSON.stringify(movie),
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRF-Token': token,
+          'Content-Type': 'application/json'
+        }
       }
     )
     .then(response => response.json())
-    .then(json =>
-       dispatch(addNewMovie(movie))
-       // show snackbar with json
-     )
-
+    .then(json => {
+      if (json.status === 'created'){
+        dispatch(addNewMovie(json.data))
+      } else {
+        alert('An error has occurred')
+      }
+      // show snackbar with json
+      }
+    )
   }
 }
 

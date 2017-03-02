@@ -25,14 +25,26 @@ class MyMovies extends React.Component {
       </Card>
     )
   }
-  render(props){
-    console.log(this.props)
+
+  displayMovies(){
     return (
       <div>
-	<AddMovieForm addNewMovie={() => {this.props.addNewMovie}}/>
-	{this.props.movies.map((movie) => (
-	  this.displayCard(movie)
-	))}
+        {this.props.movies.map((movie) => (this.displayCard(movie)))}
+      </div>
+    )
+  }
+
+  noMovies(){
+    return "No Movies available"
+  }
+
+  render(props){
+    return (
+      <div>
+        {
+          this.props.movies.length > 0 ?
+            this.displayMovies() : this.noMovies()
+        }
       </div>
     )
   }
