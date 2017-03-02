@@ -9,7 +9,7 @@ class AddMovieForm extends React.Component {
 
   resetForm(){
     document.getElementById('title').value = ''
-    document.getElementById('format').value = ''
+    //document.getElementById('format').value = ''
     document.getElementById('rating').value = ''
   }
 
