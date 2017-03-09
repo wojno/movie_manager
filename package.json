@@ -17,7 +17,10 @@
     "redux-thunk": "^2.2.0",
     "stats-webpack-plugin": "^0.4.3",
     "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2",
     "whatwg-fetch": "^2.0.2"
+  },
+  "scripts": {
+    "webpack:deploy": "webpack --config=config/webpack.config.js -p",
+    "heroku-postbuild": "npm run webpack:deploy"
   }
 }

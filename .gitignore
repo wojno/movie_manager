@@ -23,6 +23,6 @@
 coverage
 
 .env
-# Added by webpack-rails
+# webpack-related
 /node_modules
-/public/webpack
+/app/assets/javascripts/webpack
