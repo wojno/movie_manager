@@ -16,9 +16,9 @@ class UserTest < ActiveSupport::TestCase
         email:      'luke@starwars.com'
       }
     })
-    assert_equal(1, User.count)
+    assert_equal(2, User.count)
     User.find_for_oauth(google)
-    assert_equal('luke@starwars.com', User.first.email)
+    assert_equal(2, User.count)
   end
 
   test 'should sign in with Google, first time user' do
@@ -31,9 +31,9 @@ class UserTest < ActiveSupport::TestCase
         email:      'leia@starwars.com'
       }
     })
-    assert_equal(1, User.count)
-    User.find_for_oauth(google)
     assert_equal(2, User.count)
+    User.find_for_oauth(google)
+    assert_equal(3, User.count)
     leia = User.last
     assert_equal('leia@starwars.com', leia.email)
     assert_equal('123456', leia.uid)
@@ -50,8 +50,8 @@ class UserTest < ActiveSupport::TestCase
         nickname:   'Dark Lord of the Sith'
       }
     })
-    assert_equal(1, User.count)
+    assert_equal(2, User.count)
     User.find_for_oauth(twitter)
-    assert_equal(1, User.count)
+    assert_equal(2, User.count)
   end
 end

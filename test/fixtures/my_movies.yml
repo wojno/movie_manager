@@ -3,3 +3,9 @@ luke_mm:
   movie: empire
   rating: 5
   format: dvd
+
+han_mm:
+  user: han
+  movie: jedi
+  rating: 5
+  format: dvd
